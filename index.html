@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>호평지점 미니게임</title>
+    <meta
+      name="description"
+      content="QR로 접속해서 다 같이 즐기는 호평지점 전용용 미니게임(밸런스/미션/칭찬빙고/룰렛)"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./assets/styles.css" />
+  </head>
+  <body>
+    <main class="container">
+      <header class="header">
+        <div class="brand">
+          <div class="logo" aria-hidden="true">🎲</div>
+          <div>
+            <h1>호평지점 미니게임</h1>
+            <p class="subtitle">QR로 접속해서 다 같이 즐겨요 (정적 페이지 1장)</p>
+          </div>
+        </div>
+      </header>
+
+      <section class="card">
+        <nav class="tabs" aria-label="게임 선택">
+          <button class="tab isActive" data-tab="balance" type="button">밸런스</button>
+          <button class="tab" data-tab="mission" type="button">미션</button>
+          <button class="tab" data-tab="bingo" type="button">칭찬빙고</button>
+          <button class="tab" data-tab="roulette" type="button">룰렛</button>
+        </nav>
+
+        <section id="tab-balance" class="panel" aria-labelledby="밸런스">
+          <h2>밸런스 게임</h2>
+          <p class="hint">다 같이 A/B 중 하나를 고르고 이유를 말해요.</p>
+          <div class="qaCard">
+            <div id="balanceCounter" class="counter">-</div>
+            <div id="balanceQuestion" class="question">-</div>
+            <div class="twoCols">
+              <button id="balanceA" class="btn primary big" type="button">A</button>
+              <button id="balanceB" class="btn primary big" type="button">B</button>
+            </div>
+          </div>
+          <div class="actions">
+            <button id="balancePrev" class="btn" type="button">이전</button>
+            <button id="balanceNext" class="btn" type="button">다음</button>
+            <button id="balanceShuffle" class="btn" type="button">이 탭만 다시 섞기</button>
+          </div>
+        </section>
+
+        <section id="tab-mission" class="panel hidden" aria-labelledby="미션">
+          <h2>미션 뽑기</h2>
+          <p class="hint">랜덤 미션을 뽑고, 성공하면 다음 사람!</p>
+          <div class="qaCard">
+            <div class="counter">TIP: 부담 없는 미션 위주</div>
+            <div id="missionText" class="question">버튼을 눌러 뽑기</div>
+          </div>
+          <div class="actions">
+            <button id="missionPick" class="btn primary" type="button">뽑기</button>
+            <button id="missionAgain" class="btn" type="button">다시</button>
+          </div>
+        </section>
+
+        <section id="tab-bingo" class="panel hidden" aria-labelledby="칭찬빙고">
+          <h2>칭찬 빙고 (5×5)</h2>
+          <p class="hint">
+            돌아가며 한 칸씩 “해당되는 사람”을 말하고 체크해요. 먼저 빙고 완성한 사람이
+            승리!
+          </p>
+          <div class="actions">
+            <button id="bingoResetMarks" class="btn" type="button">체크 초기화</button>
+            <button id="bingoRegenerate" class="btn" type="button">카드 새로 만들기</button>
+          </div>
+          <div id="bingoGrid" class="bingoGrid" role="grid" aria-label="빙고판"></div>
+        </section>
+
+        <section id="tab-roulette" class="panel hidden" aria-labelledby="룰렛">
+          <h2>룰렛</h2>
+          <p class="hint">
+            항목을 수정한 뒤 스핀! (기본: 건배사/칭찬/한 줄 소감 등)
+          </p>
+          <div class="rouletteWrap">
+            <canvas id="wheel" width="320" height="320"></canvas>
+            <div class="rouletteControls">
+              <label class="field">
+                <span class="label">룰렛 항목(쉼표로 구분)</span>
+                <textarea id="rouletteItems" rows="6"></textarea>
+              </label>
+              <div class="actions">
+                <button id="spinBtn" class="btn primary" type="button">스핀</button>
+                <button id="rouletteReset" class="btn" type="button">기본값</button>
+              </div>
+              <div id="rouletteResult" class="resultBox" aria-live="polite"></div>
+            </div>
+          </div>
+        </section>
+      </section>
+
+      <footer class="footer">
+        <p>
+        </p>
+      </footer>
+    </main>
+
+    <script src="./assets/app.js" defer></script>
+  </body>
+</html>
+
+
